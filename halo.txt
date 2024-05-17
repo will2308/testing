@@ -1,2 +1,2 @@
 restart
-new begans
+new beganss

@@ -1,8 +1,0 @@
-<<<<<<< HEAD
-baleni
-satu
-=======
-restart
-asdaa
-	
->>>>>>> ee89c21c302b922849617676234a5c59b5afd0f4

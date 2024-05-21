@@ -1,11 +1,52 @@
-from odoo import models, fields, api
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- cdn.daftar.jamaah tree view -->
+        <record id="cdn_daftar_jamaah_view_tree" model="ir.ui.view">
+            <field name="name">cdn.daftar.jamaah.view.tree</field>
+            <field name="model">cdn.daftar.jamaah</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="jamaah_ids"/>
+                    <field name="paspor"/>
+                    <field name="umur"/>
+                    <field name="kategori"/>
+                </tree>
+            </field>
+        </record>
 
-class CdnDaftarJamaah(models.Model):
-    _name = 'cdn.daftar.jamaah'
-    _description = 'Daftar Jamaah'
+        <!-- cdn.daftar.jamaah form view -->
+        <record id="cdn_daftar_jamaah_view_form" model="ir.ui.view">
+            <field name="name">cdn.daftar.jamaah.view.form</field>
+            <field name="model">cdn.daftar.jamaah</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <field name="jamaah_ids"/>
+                            <field name="paspor"/>
+                            <field name="umur"/>
+                            <field name="kategori"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
 
-    jamaah_ids = fields.Many2many(comodel_name='cdn.identitas.jamaah', string='Jamaah')
-    kategori = fields.Char(related='jamaah_ids.kategori', string='Kategori', store=True)
-    paspor = fields.Char(related='jamaah_ids.paspor', string='Paspor', store=True)
-    umur = fields.Integer(related='jamaah_ids.umur', string='Umur', store=True)
-    state = fields.Selection(related='jamaah_ids.state', string='Status', store=True)
+        <!-- cdn.daftar.jamaah action window -->
+        <record id="cdn_daftar_jamaah_action" model="ir.actions.act_window">
+            <field name="name">cdn.daftar.jamaah.action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">cdn.daftar.jamaah</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+            
+                </p>
+            </field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="daftar_jamaah_menu_act" name="Daftar Jamaah" parent="travel_arrosyid_menu_categ" action="cdn_daftar_jamaah_action" sequence=""/>
+    </data>
+</odoo>

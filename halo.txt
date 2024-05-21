@@ -1,7 +1,11 @@
-HALOHALO
-HHHAAAAA
-saya edit ini
-one
-kemal baru
-two
-yong
+from odoo import models, fields, api
+
+class CdnDaftarJamaah(models.Model):
+    _name = 'cdn.daftar.jamaah'
+    _description = 'Daftar Jamaah'
+
+    jamaah_ids = fields.Many2many(comodel_name='cdn.identitas.jamaah', string='Jamaah')
+    kategori = fields.Char(related='jamaah_ids.kategori', string='Kategori', store=True)
+    paspor = fields.Char(related='jamaah_ids.paspor', string='Paspor', store=True)
+    umur = fields.Integer(related='jamaah_ids.umur', string='Umur', store=True)
+    state = fields.Selection(related='jamaah_ids.state', string='Status', store=True)
